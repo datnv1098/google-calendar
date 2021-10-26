@@ -1,6 +1,25 @@
 import axios from "axios";
 
 /**
+ * GET EVENTS CALENDAR ID
+ * @param access_token
+ * @param calendarId
+ * @return {Promise<>}
+ */
+export const getEventsCalendar = async (access_token = '', calendarId = '') => {
+  try{
+    const res = await axios.get(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
+      headers: {
+        Authorization: "Bearer " + access_token
+      }
+    })
+    return res?.data
+  }catch (e) {
+    return e
+  }
+}
+
+/**
  * GET EVENT
  * @param access_token
  * @param calendarId
