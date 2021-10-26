@@ -8,7 +8,7 @@ const {v4} = require("uuid");
  * @param email
  * @return {Promise<unknown>}
  */
-export const watchCalendar = async (access_token, address, email) => {
+const watchCalendar = async (access_token, address, email) => {
   try {
     const config = {
       headers: {
@@ -33,7 +33,7 @@ export const watchCalendar = async (access_token, address, email) => {
  * @param address{'example: https://domain/googleCalendarWatchList'}
  * @return {Promise<unknown>}
  */
-export const watchCalendarList = async (access_token, address) => {
+const watchCalendarList = async (access_token, address) => {
   try {
     const response = await axios.post(`https://www.googleapis.com/calendar/v3/users/me/calendarList/watch`, {
       "id": v4(),
@@ -48,4 +48,9 @@ export const watchCalendarList = async (access_token, address) => {
   } catch (e) {
     return e
   }
+}
+
+module.exports = {
+  watchCalendar,
+  watchCalendarList
 }

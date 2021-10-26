@@ -5,7 +5,7 @@ import axios from "axios";
  * @param access_token
  * @return {Promise<>}
  */
-export const getCalendarList = async (access_token = '') => {
+const getCalendarList = async (access_token = '') => {
   try{
     const res = await axios.get(`https://www.googleapis.com/calendar/v3/users/me/calendarList`, {
       headers: {
@@ -25,7 +25,7 @@ export const getCalendarList = async (access_token = '') => {
  * @param calendarId
  * @return {Promise<>}
  */
-export const getCalendarById = async (access_token = '', calendarId = '') => {
+const getCalendarById = async (access_token = '', calendarId = '') => {
   try{
     const res = await axios.get(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}`, {
       headers: {
@@ -44,7 +44,7 @@ export const getCalendarById = async (access_token = '', calendarId = '') => {
  * @param calendar
  * @return {Promise<>}
  */
-export const createCalendar = async (access_token = '', calendar) => {
+const createCalendar = async (access_token = '', calendar) => {
   try{
     const res = await axios.post(`https://www.googleapis.com/calendar/v3/calendars`, calendar, {
       headers: {
@@ -64,7 +64,7 @@ export const createCalendar = async (access_token = '', calendar) => {
  * @param calendar
  * @return {Promise<>}
  */
-export const updateCalendar = async (access_token = '', calendarId = '', calendar) => {
+const updateCalendar = async (access_token = '', calendarId = '', calendar) => {
   try{
     const res = await axios.put(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}`, calendar, {
       headers: {
@@ -83,7 +83,7 @@ export const updateCalendar = async (access_token = '', calendarId = '', calenda
  * @param calendarId
  * @return {Promise<>}
  */
-export const deleteCalendar = async (access_token = '', calendarId = '') => {
+const deleteCalendar = async (access_token = '', calendarId = '') => {
   try{
     const res = await axios.delete(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}`, {
       headers: {
@@ -94,4 +94,11 @@ export const deleteCalendar = async (access_token = '', calendarId = '') => {
   }catch (e) {
     return e
   }
+}
+module.exports = {
+  getCalendarList,
+  getCalendarById,
+  createCalendar,
+  updateCalendar,
+  deleteCalendar
 }

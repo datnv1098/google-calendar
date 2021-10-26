@@ -6,7 +6,7 @@ import axios from "axios";
  * @param calendarId
  * @return {Promise<>}
  */
-export const getEventsCalendar = async (access_token = '', calendarId = '') => {
+const getEventsCalendar = async (access_token = '', calendarId = '') => {
   try{
     const res = await axios.get(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, {
       headers: {
@@ -26,7 +26,7 @@ export const getEventsCalendar = async (access_token = '', calendarId = '') => {
  * @param eventId
  * @return {Promise<>}
  */
-export const getEvent = async (access_token = '', calendarId = '', eventId) => {
+const getEventById = async (access_token = '', calendarId = '', eventId) => {
   try{
     const res = await axios.get(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${eventId}`, {
       headers: {
@@ -46,7 +46,7 @@ export const getEvent = async (access_token = '', calendarId = '', eventId) => {
  * @param event
  * @return {Promise<>}
  */
-export const createEvent = async (access_token = '', calendarId = '', event) => {
+const createEvent = async (access_token = '', calendarId = '', event) => {
   try{
     const res = await axios.post(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`, event, {
       headers: {
@@ -66,7 +66,7 @@ export const createEvent = async (access_token = '', calendarId = '', event) => 
  * @param event
  * @return {Promise<>}
  */
-export const updateEvent = async (access_token = '', calendarId = '', event) => {
+const updateEvent = async (access_token = '', calendarId = '', event) => {
   try{
     const res = await axios.put(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}`, event, {
       headers: {
@@ -86,7 +86,7 @@ export const updateEvent = async (access_token = '', calendarId = '', event) => 
  * @param eventId
  * @return {Promise<>}
  */
-export const deleteEvent = async (access_token = '', calendarId = '', eventId) => {
+const deleteEvent = async (access_token = '', calendarId = '', eventId) => {
   try{
     const res = await axios.delete(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${eventId}`, {
       headers: {
@@ -97,4 +97,12 @@ export const deleteEvent = async (access_token = '', calendarId = '', eventId) =
   }catch (e) {
     return e
   }
+}
+
+module.exports = {
+  getEventsCalendar,
+  getEventById,
+  createEvent,
+  updateEvent,
+  deleteEvent
 }
