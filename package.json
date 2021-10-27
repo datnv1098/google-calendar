@@ -1,10 +1,10 @@
 {
   "name": "google-calendar-clf",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "calendar google api",
   "author": "datnv1098",
   "license": "MIT",
-  "repository": "datnv1098/google-calendar",
+  "repository": "git@github.com:datnv1098/google-calendar.git",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
